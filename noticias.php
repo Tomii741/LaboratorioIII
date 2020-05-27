@@ -1,3 +1,9 @@
+<?php 
+    include("connect.php");
+    // conectar("UPDATE tb_noticias SET TITULO='TOMI', CUERPO='Adri',FECHA='2020-05-27' WHERE ID='4'");   
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
