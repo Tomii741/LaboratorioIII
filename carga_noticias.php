@@ -44,7 +44,7 @@
             </div>
             
 
-            <button class="col-lg-2 col-md-4 col-sm-12 btn btn-success">Enviar Noticia</button>
+            <button class="col-lg-2 col-md-4 col-sm-12 btn btn-success" type="submit" value="regristrarUsuario.php" >Enviar Noticia</button>
 
         </form>
     </div>

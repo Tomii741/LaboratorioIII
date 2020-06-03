@@ -1,7 +1,14 @@
 <?php 
     include("connect.php");
-    // conectar("UPDATE tb_noticias SET TITULO='TOMI', CUERPO='Adri',FECHA='2020-05-27' WHERE ID='4'");   
     
+    $s = conectar('SELECT * FROM tb_noticias');
+    // $s = 'SELECT ID FROM tb_noticias';   
+    if(isset($s)){
+        while ($row = $s->fetch_assoc()) {
+            echo ($row['ID']);
+        }         
+    };
+    // echo $s;
 ?>
 
 <!DOCTYPE html>

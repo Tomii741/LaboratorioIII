@@ -17,9 +17,10 @@ function conectar($string){
     
 
     //envio la query
-    mysqli_query($conn,$string);
-
-    mysqli_close($conn);
+    return $conn->query($string);
+     
+    //cierra la conexion
+    // mysqli_close($conn);
 }
 
 ?>
