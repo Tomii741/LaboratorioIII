@@ -11,21 +11,6 @@ header >h1{
   text-align: center;
 }
 
-.navbar{
-  background: #ccc;
-  padding: 1em;
-}
-
-.ulnav >li{
-  position: relative;
-  display: inline-block;
-  margin: 0.5em;
-}
-
-.ulnav >li >a{
-  text-decoration: none;
-}
-
 .footer {
   padding: 4em;
   color: #868589;
