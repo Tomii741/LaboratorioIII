@@ -1,13 +1,18 @@
 <?php 
+    //UNICAMENTE COMO EJEMPLO NO SIRVE PARA NADA 
     include("connect.php");
     
     $s = conectar('SELECT * FROM tb_noticias');
     // $s = 'SELECT ID FROM tb_noticias';   
     if(isset($s)){
         while ($row = $s->fetch_assoc()) {
-            echo ($row['ID']);
+            echo ($row['ID'].$row['TITULO']);
         }         
     };
+    // conectar('INSERT INTO tb_noticias (TITULO,CUERPO,PATH_IMAGEN,PATH_IMAGEN_MIN,FECHA,AUTOR,CATEGORIA) 
+    // VALUES ("A","B","C","D","1930-12-30","E","F")');
+
+    
     // echo $s;
 ?>
 

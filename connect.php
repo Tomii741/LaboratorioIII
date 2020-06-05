@@ -17,8 +17,17 @@ function conectar($string){
     
 
     //envio la query
-    return $conn->query($string);
-     
+    // return $conn->query($string);
+    // return $conn->error;
+    if($resp = $conn->query($string))
+    {
+      //si funciono la query devuelvo el valor (para ser tomado cuando se use un select)
+      return $resp;
+    }
+    else{
+      //si no funciono la query se devuelve el log de error para ser debuggeado
+      return $conn->error;
+    }
     //cierra la conexion
     // mysqli_close($conn);
 }
