@@ -23,9 +23,9 @@
                 </div>
                 <select class="custom-select" id="inputGroupSelect01" name="Categoria">
                     <option value="" selected>Seleccione una categoria...</option>
-                    <option value="1">Una</option>
-                    <option value="2">Dos</option>
-                    <option value="3">Tres</option>
+                    <option value="1">Nacionales</option>
+                    <option value="2">Internacionales</option>
+                    <option value="3">Coronavirus</option>
                 </select>
             </div>
 
@@ -42,16 +42,16 @@
             <div class="form-group">
                 <label>Imagen miniatura</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFileLangMin" lang="es" name="Img_min">
-                    <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                    <input type="file" class="custom-file-input" id="customFileMin" lang="es" name="Img_min">
+                    <label class="custom-file-label" for="customFileLang">Seleccionar Archivo - 640x360</label>
                 </div>
             </div>
 
             <div class="form-group">
                 <label>Imagen principal</label>
                 <div class="custom-file">
-                    <input type="file" class="custom-file-input" id="customFileLang" lang="es" name="Img">
-                    <label class="custom-file-label" for="customFileLang">Seleccionar Archivo</label>
+                    <input type="file" class="custom-file-input" id="customFile" lang="es" name="Img">
+                    <label class="custom-file-label" for="customFile">Seleccionar Archivo - 1280x720</label>
                 </div>
             </div>
 
@@ -63,5 +63,22 @@
 </body>
 <script src="js/jquery-3.5.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script>
+    
+    $(document).ready(function(){
+        //cambio el text del label del #customFile por el nombre del archivo a subir
+        $("#customFile").change(function(){
+            var filename = this.files[0].name;
+            $(this).parent().find('label').text(filename);
+        })
+        //cambio el text del label del #customFileMin por el nombre del archivo a subir
+        $("#customFileMin").change(function(){
+            var filename = this.files[0].name;
+            $(this).parent().find('label').text(filename);
+        })
+
+    });
+
+</script>
 
 </html>

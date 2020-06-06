@@ -1,10 +1,11 @@
 <?php 
 
-include("connect.php");
+include("connect.php"); //conexion base de datos
+
 $fecha = date("Y-m-d");
 $horaInternet = date("B");
 $direccion = "img/";
-echo $_POST['Categoria'];
+
 
 if(isset($_POST['Categoria']) && $_POST['Categoria']!=""){
     $categoria = $_POST['Categoria'];
