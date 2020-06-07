@@ -15,7 +15,7 @@
         <div class="card-header text-white">
             <h1>Registrate</h1>
         </div>
-        <form class="form-registro">
+        <form class="form-registro" action="" METHOD="POST">
             <br>
             <div class="form-row text-white">
                 <div class="form-group col-md-6">
@@ -39,27 +39,27 @@
                 <input type="password" name="Contraseña" class="form-control" placeholder="Contraseña">
             </div>
             
-            <div class="row text-white">
+            <div class="form-row text-white">
                 <div class="form-group col-md-6">
                     <label>Fecha de nacimiento</label>
-                    <input type="text" name="fecha" class="form-control" placeholder="Fecha de nacimiento">
+                    <input type="date" name="Fecha" class="form-control" placeholder="Fecha de nacimiento">
                 </div>
 
                 <div class="form-check col-md-6">
                     <label>Tipo de Usuario</label>
                     <div class="form-check col-sm-3">
-                        <input type="radio" name="tipo_usuario" id="Aut" class="form-check-input" value="Autor">
+                        <input type="radio" name="Tipo_usuario" id="Aut" class="form-check-input" value="true">
                         <label for="Aut" class="form-check-label">Autor</label> 
                     </div>
                     <div class="form-check col-sm-3">
-                        <input type="radio" name="tipo_usuario" id="Lec" class="form-check-input" value="Lector">
+                        <input type="radio" name="Tipo_usuario" id="Lec" class="form-check-input" value="false">
                         <label for="Lec" class="form-check-label">Lector</label> 
                     </div>
                 </div>
             </div>
             <br>
             
-            <button class="col-lg-2 col-md-4 col-sm-12 btn btn-success" type="submit" value="regristrarUsuario.php">Registrar</button>
+            <button class="col-lg-2 col-md-4 col-sm-12 btn btn-success" type="submit" value="añadir" name="boton">Registrar</button>
 
         </form>
     </div>
@@ -69,3 +69,30 @@
 <script src="js/bootstrap.min.js"></script>
 
 </html>
+
+<?php
+    include("connect.php");
+
+    if(isset($_POST["boton"]) && $_POST["boton"]!=""){
+
+        $Nombre = $_POST['Nombre'];
+        $Apellido = $_POST['Apellido'];
+        $Email = $_POST['Email'];
+        $Contraseña = $_POST['Contraseña'];
+        $Fecha = $_POST['Fecha'];
+        $Tipo_usuario = $_POST['Tipo_usuario'];
+
+        if(conectar("INSERT INTO tb_registrar (NOMBRE, APELLIDO, EMAIL, CONTRASEÑA, FECHA_NAC, TIPO_USUARIO)
+        VALUES ('$Nombre', '$Apellido', '$Email', '$Contraseña', '$Fecha', '$Tipo_usuario')")){
+
+            echo "CARGADO!!";
+
+        }else{
+
+            echo "ERROR: ";
+
+        }
+
+    }
+
+?>
