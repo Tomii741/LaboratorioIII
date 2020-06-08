@@ -56,9 +56,11 @@ if(move_uploaded_file($_FILES['Img']['tmp_name'],$img)){
         VALUES( '$titulo', '$cuerpo', '$img', '$img_min', '$fecha','sin autor', $categoria)"
         );
         // FALTA que las noticias lleven anexado el autor que sera quien haya hecho el login
-        echo "Archivo Subido";
+        echo "<script>alert('Archivo Subido')</script>";
         //Aqui va a ir una redireccion a carga_noticias.php que sera implementada 
         // una vez que el sistema de carga este terminado
+        header('Location: carga_noticias.php');
+        die();
         
     }
     else{

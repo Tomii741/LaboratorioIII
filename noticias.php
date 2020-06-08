@@ -1,21 +1,3 @@
-<?php
-//UNICAMENTE COMO EJEMPLO NO SIRVE PARA NADA 
-include("connect.php");
-
-$s = conectar('SELECT * FROM tb_noticias');
-// $s = 'SELECT ID FROM tb_noticias';   
-if (isset($s)) {
-    while ($row = $s->fetch_assoc()) {
-        echo ($row['ID'] . $row['TITULO']);
-    }
-};
-// conectar('INSERT INTO tb_noticias (TITULO,CUERPO,PATH_IMAGEN,PATH_IMAGEN_MIN,FECHA,AUTOR,CATEGORIA) 
-// VALUES ("A","B","C","D","1930-12-30","E","F")');
-
-
-// echo $s;
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -32,7 +14,7 @@ if (isset($s)) {
         <h1>HEADER ACA (importar de Index.html)</h1>
     </div>
     <div class="row w-100 mt-3" id="noticias">
-        <div class="col-md-4 ">
+        <!-- <div class="col-md-4 ">
             <div class="card card-noticia">
                 <label>CATEGORIA</label>
                 <img src="img/640x360.jpg" alt="Noticia 1">
@@ -54,7 +36,7 @@ if (isset($s)) {
                 <img src="img/640x360.jpg" alt="Noticia 1">
                 <label>17/05/2020</label>
                 <p>Titulo de la Noticia</p>
-            </div>
+            </div> -->
         </div>
 
     </div>
@@ -84,12 +66,12 @@ if (isset($s)) {
 
                     for(var i=0;i<dat.length ;i++){ //recorro el array de datos y hago un append en de cada card de noticia
                         $("#noticias").append('<div class="col-md-4 ">' +
-                                                '<div class="card card-noticia">' +
+                                                '<a href="" class="card card-noticia no-link">' +
                                                     '<label>'+dat[i].CATEGORIA+'</label>' +
-                                                    '<img src="'+dat[i].PATH_IMAGEN_MIN+'" alt="Noticia '+ i +'">' +
+                                                    '<img src="'+dat[i].PATH_IMAGEN_MIN+'" alt="Noticia '+ dat[i].ID +'">' +
                                                     '<label>'+dat[i].FECHA+'</label>' +
                                                     '<p>'+dat[i].TITULO+'</p>' +
-                                                '</div>' +
+                                                '</a>' +
                                             '</div>');
                     }
             }
