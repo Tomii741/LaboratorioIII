@@ -1,3 +1,11 @@
+<?php
+
+session_start();
+echo $_SESSION['usuario'];
+echo "Bienvenido";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,3 +132,4 @@
 <script src="js/bootstrap.min.js"></script>
 
 </html>
+
