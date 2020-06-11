@@ -80,13 +80,24 @@
         $Email = $_POST['Email'];
         $Contraseña = $_POST['Contraseña'];
         $Fecha = $_POST['Fecha'];
-        $Tipo_usuario = $_POST['Tipo_usuario'];
+
+        if($_POST['Tipo_usuario'] == 'true'){
+
+            $Tipo_usuario = 'Autor';
+
+        }else {
+            
+            $Tipo_usuario = 'Lector';
+        }
 
         if(conectar("INSERT INTO tb_registrar (NOMBRE, APELLIDO, EMAIL, CONTRASEÑA, FECHA_NAC, TIPO_USUARIO)
         VALUES ('$Nombre', '$Apellido', '$Email', '$Contraseña', '$Fecha', '$Tipo_usuario')")){
 
-            echo "CARGADO!!";           
+            echo "CARGADO!!";
+            
+            //header("Location: index.html");
 
+            die();
         }else{
 
             echo "ERROR: ";
