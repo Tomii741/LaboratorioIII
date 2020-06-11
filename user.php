@@ -10,7 +10,10 @@ $query = conectar ("SELECT COUNT(*) as contar, EMAIL, TIPO_USUARIO, NOMBRE, APEL
 $array = mysqli_fetch_array($query);
 
 if($array['contar']>0){
-    $_SESSION['usuario'] = $array['NOMBRE'];
+    $_SESSION['email'] = $array['EMAIL'];
+    $_SESSION['usuario'] = $array['NOMBRE'].' '.$array['APELLIDO'];
+    $_SESSION['id'] = $array['ID'];
+    $_SESSION['tipo_usuario'] = $array['TIPO_USUARIO'];
     header("location: index.php");
 }else{
     echo "Datos invalidos";

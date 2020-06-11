@@ -26,6 +26,8 @@
             </div>
 
             <button class="col-lg-2 col-md-4 col-sm-12 btn btn-success" type="submit" value="login" name="boton">Iniciar Sesion</button>
+            <a class="col-lg-2 col-md-4 col-sm-12 btn btn-secondary" href="register.php">Registrarse</a>
+            
         </form>
 </body>
 

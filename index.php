@@ -1,9 +1,14 @@
 <?php
 
 session_start();
-echo $_SESSION['usuario'];
-echo "Bienvenido";
+$Email = $_SESSION['email'];
 
+if(!isset($Email)){
+    header("location: login.php");
+}else{
+    echo "Bienvenido ";
+    echo $_SESSION['usuario'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -47,6 +52,18 @@ echo "Bienvenido";
 
                   <li class="nav-item">
                     <a class="nav-link" href="#">Contacto</a>
+                  </li>
+
+                  <?php
+                        if(isset($_SESSION['tipo_usuario'])&&$_SESSION['tipo_usuario']=="Autor"){
+                            echo '<li class="nav-item">
+                                    <a class="nav-link" href="carga_noticias.php">Cargar Noticia</a>
+                                </li>';
+                        }
+                    ?>
+
+                  <li class="nav-item">
+                    <a class="nav-link btn btn-outline-secondary" href="logout.php">Cerrar Sesion</a>
                   </li>
                 </ul>
               </div>
