@@ -15,7 +15,7 @@
         <div class="card-header text-white">
             <h1>Registrate</h1>
         </div>
-        <form class="form-registro" action="" METHOD="POST">
+        <form class="form-registro" action="" METHOD="POST" onsubmit="return validacion()">
             <br>
             <div class="form-row text-white">
                 <div class="form-group col-md-6">
@@ -67,7 +67,28 @@
 
 <script src="js/jquery-3.5.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script>
+    function validacion(){
+        var resultado = true;
 
+        $(":input").each(function() {
+
+            if($(this).val() == ""){
+                alert($(this).attr("name"));
+                resultado = false;
+            }
+             
+        });
+        if($("#Aut").is(':checked') || $("#Lec").is(':checked')){
+            
+        }else{
+            resultado = false;
+            alert("Debe seleccionar tipo de usuario");
+        }
+        return resultado;
+    }
+
+</script>
 </html>
 
 <?php
@@ -95,7 +116,7 @@
 
             echo "CARGADO!!";
             
-            //header("Location: index.html");
+            header("Location: login.php");
 
             die();
         }else{
