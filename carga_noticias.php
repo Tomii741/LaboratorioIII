@@ -17,13 +17,13 @@
         <div class="card-header text-white">
             <h1>Noticias</h1>
         </div>
-        <form class="form-carga-noticias" action="insert_noticias.php" method="POST" enctype="multipart/form-data">
+        <form id="formCarga" class="form-carga-noticias" action="insert_noticias.php" method="POST" enctype="multipart/form-data">
             <br>
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Categoria</label>
+                    <label class="input-group-text" for="inputGroupCategoria">Categoria</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect01" name="Categoria">
+                <select class="custom-select" id="inputGroupCategoria" name="Categoria">
                     <option value="" selected>Seleccione una categoria...</option>
                     <option value="1">Nacionales</option>
                     <option value="2">Internacionales</option>
@@ -57,8 +57,9 @@
                 </div>
             </div>
 
-
-            <button class="col-lg-2 col-md-4 col-sm-12 btn btn-success" type="submit" name="submit" id="botonEnviar">Enviar Noticia</button>
+            <div id="divBoton">
+                <button class="col-lg-2 col-md-4 col-sm-12 btn btn-success" type="submit" name="submit" >Enviar Noticia</button>
+            </div>
 
         </form>
     </div>
@@ -143,8 +144,24 @@
             data: {query:'SELECT * FROM tb_noticias WHERE ID="'+ID_Noticia+'"'},
             dataType: "json",
             success : function(response){
-                console.log(response);
-                alert(response[0].TITULO);
+                switch(response[0].CATEGORIA){
+                    case "NACIONALES": $cat = 1;
+                    break;
+                    case "INTERNACIONALES": $cat = 2;
+                    break;
+                    case "CORONAVIRUS": $cat = 3;
+                    break;
+                    case "DEFECTO": $cat = 0;
+                    break;
+                }
+                $("#inputGroupCategoria").val($cat);
+                $("#titulo").val(response[0].TITULO);
+                $("#cuerpo").val(response[0].CUERPO);
+                $("#formCarga").attr('action','update_noticias.php');
+                $("#divBoton").html('<button class="col-lg-2 col-md-4 col-sm-12 btn btn-warning" type="submit" style="color: black" >Guardar Edicion</button>');
+                $("#formCarga").append('<input type="hidden" name="id" value="'+ID_Noticia+'">');
+                alert("Edite su noticia y luego guardela");
+                $('html, body').animate( { scrollTop : 0 }, 800 ); //scrollea arriba
 
                 
             }
