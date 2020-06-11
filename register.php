@@ -85,7 +85,7 @@
         if(conectar("INSERT INTO tb_registrar (NOMBRE, APELLIDO, EMAIL, CONTRASEÑA, FECHA_NAC, TIPO_USUARIO)
         VALUES ('$Nombre', '$Apellido', '$Email', '$Contraseña', '$Fecha', '$Tipo_usuario')")){
 
-            echo "CARGADO!!";
+            echo "CARGADO!!";           
 
         }else{
 

@@ -1,10 +1,15 @@
 <?php
-
+    
     include("connect.php");
 
-    $query = 'SELECT * FROM tb_noticias';
+    //si me pasa alguna query traigo los datos solicitados, sino traigo todos los datos
+    if(isset($_POST['query'])){
+        $query = $_POST['query'];
+    }else{
+        $query = 'SELECT * FROM tb_noticias';
+    }
 
-    $result = conectar('SELECT * FROM tb_noticias');
+    $result = conectar($query);
     // echo $result;
     $datos = array();
     if(isset($result)){

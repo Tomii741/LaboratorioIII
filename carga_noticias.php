@@ -7,6 +7,8 @@
     <title>Noticias del Fondo</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
 </head>
 
 
@@ -60,6 +62,22 @@
 
         </form>
     </div>
+    <div class="col-lg-9 col-md-11 col-sm-12 m-auto" >
+        <table class="table table-hover table-dark table-borderless mt-3">
+            <thead>
+                <tr>
+                    <th >ID</th>
+                    <th >Titulo</th>
+                    <th >Fecha</th>
+                    <th >Categoria</th>
+                    <th >Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="list_noticias">
+
+            </tbody>
+        </table>
+    </div>
 </body>
 <script src="js/jquery-3.5.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -77,7 +95,60 @@
             $(this).parent().find('label').text(filename);
         })
 
+        // Enlistado de noticias en la tabla #list_noticias
+        $.ajax({
+            type: "POST",
+            url: "select_noticias.php",
+            data: {query:'SELECT * FROM tb_noticias WHERE AUTOR="sin autor"'},//query personalizada sino trae todos los datos (es necesario
+            // cambiar "sin autor" por el nombre de la $_SESSION cuando este implementado)
+            success: function(resp){
+                var noticias = JSON.parse(resp);
+
+                for(var i=0;i < noticias.length ;i++){
+                    $("#list_noticias").append("<tr>"+
+                        "<th id='ID'>"+noticias[i].ID+"</th>"+
+                        "<th>"+noticias[i].TITULO+"</th>"+
+                        "<th>"+noticias[i].FECHA+"</th>"+
+                        "<th>"+noticias[i].CATEGORIA+"</th>"+
+                        "<th><button class='btn btn-danger' type='button' onclick='borrar("+noticias[i].ID+")'><i class='fas fa-trash'></i></button>"+
+                        "<button class='btn btn-warning m-1' type='button' onclick='editar("+noticias[i].ID+")'><i class='fas fa-edit'></i></button</th>"+
+                    "</tr>"
+                     );
+                     
+                }
+            }
+        })
+
+
     });
+
+    function borrar(ID_Noticia){
+        //toma el ID de la noticia y lo elimina de la DB
+        $.ajax({
+            type: "POST",
+            url: "delete_noticias.php",
+            data: {id: ID_Noticia},
+            success : function(response){
+                alert(response);
+                location.reload();
+            }
+        })
+    }
+    
+    function editar(ID_Noticia){
+        //
+        $.ajax({
+            type: "POST",
+            url: "select_noticias.php",
+            data: {query:'SELECT * FROM tb_noticias WHERE ID="'+ID_Noticia+'"'},
+            dataType: "json",
+            success : function(response){
+                console.log(response);
+                alert(response[0].TITULO);
+                
+            }
+        })
+    }
 
 </script>
 </html>
