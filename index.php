@@ -6,8 +6,8 @@ $Email = $_SESSION['email'];
 if(!isset($Email)){
     header("location: login.php");
 }else{
-    echo "Bienvenido ";
-    echo $_SESSION['usuario'];
+    echo "<script>alert('Bienvenido ".$_SESSION['usuario']."');</script>";
+
 }
 ?>
 
@@ -57,7 +57,7 @@ if(!isset($Email)){
                   <?php
                         if(isset($_SESSION['tipo_usuario'])&&$_SESSION['tipo_usuario']=="Autor"){
                             echo '<li class="nav-item">
-                                    <a class="nav-link" href="carga_noticias.php">Cargar Noticia</a>
+                                    <a class="nav-link" href="carga_noticias.php" target="_blank">Cargar Noticia</a>
                                 </li>';
                         }
                     ?>

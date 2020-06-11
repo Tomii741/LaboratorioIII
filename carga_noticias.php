@@ -1,3 +1,13 @@
+<?php
+
+session_start();
+
+
+if(!isset($_SESSION['usuario']) || $_SESSION['tipo_usuario']!="Autor"){
+    header("location: login.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,6 +26,7 @@
     <div class="card bg-primary col-lg-9 col-md-11 col-sm-12 m-auto">
         <div class="card-header text-white">
             <h1>Noticias</h1>
+            <?php echo "<h5>".$_SESSION['usuario']."</h5>" ?>
         </div>
         <form id="formCarga" class="form-carga-noticias" action="insert_noticias.php" method="POST" enctype="multipart/form-data">
             <br>
@@ -56,6 +67,7 @@
                     <label class="custom-file-label" for="customFile">Seleccionar Archivo - 1280x720</label>
                 </div>
             </div>
+            <input type="hidden" name="Autor" value="<?php echo $_SESSION['usuario'] ?>">
 
             <div id="divBoton">
                 <button class="col-lg-2 col-md-4 col-sm-12 btn btn-success" type="submit" name="submit" >Enviar Noticia</button>
@@ -100,7 +112,7 @@
         $.ajax({
             type: "POST",
             url: "select_noticias.php",
-            data: {query:'SELECT * FROM tb_noticias WHERE AUTOR="sin autor"'},//query personalizada sino trae todos los datos (es necesario
+            data: {query:'opcion '},//query personalizada sino trae todos los datos (es necesario
             // cambiar "sin autor" por el nombre de la $_SESSION cuando este implementado)
             success: function(resp){
                 var noticias = JSON.parse(resp);
@@ -141,7 +153,7 @@
         $.ajax({
             type: "POST",
             url: "select_noticias.php",
-            data: {query:'SELECT * FROM tb_noticias WHERE ID="'+ID_Noticia+'"'},
+            data: {queryID:ID_Noticia},
             dataType: "json",
             success : function(response){
                 switch(response[0].CATEGORIA){

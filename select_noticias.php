@@ -1,12 +1,17 @@
 <?php
     
     include("connect.php");
-
-    //si me pasa alguna query traigo los datos solicitados, sino traigo todos los datos
+    session_start();
+    $query = 'SELECT * FROM tb_noticias';
     if(isset($_POST['query'])){
-        $query = $_POST['query'];
-    }else{
-        $query = 'SELECT * FROM tb_noticias';
+        $query = "SELECT * FROM tb_noticias WHERE AUTOR = '". $_SESSION['usuario'] . "'";       
+    }
+    //si me pasa alguna query traigo los datos solicitados, sino traigo todos los datos
+    if(isset($_POST['queryID'])){
+        $query = "SELECT * FROM tb_noticias WHERE ID=" . $_POST['queryID'];       
+    }
+    if(isset($_GET['categoria'])){
+        $query = "SELECT * FROM tb_noticias WHERE CATEGORIA='" . $_GET['categoria']."'";       
     }
 
     $result = conectar($query);
