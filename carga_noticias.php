@@ -33,12 +33,12 @@
 
             <div class="form-group">
                 <label>Titulo</label>
-                <input type="text" name="Titulo" class="form-control" placeholder="Titulo de la noticia">
+                <input type="text" id='titulo' name="Titulo" class="form-control" placeholder="Titulo de la noticia">
             </div>
 
             <div class="form-group">
                 <label>Cuerpo</label>
-                <input type="text" name="Cuerpo" class="form-control" placeholder="Cuerpo de la noticia">
+                <input type="text" name="Cuerpo" id="cuerpo" class="form-control" placeholder="Cuerpo de la noticia">
             </div>
 
             <div class="form-group">
@@ -58,7 +58,7 @@
             </div>
 
 
-            <button class="col-lg-2 col-md-4 col-sm-12 btn btn-success" type="submit" name="submit">Enviar Noticia</button>
+            <button class="col-lg-2 col-md-4 col-sm-12 btn btn-success" type="submit" name="submit" id="botonEnviar">Enviar Noticia</button>
 
         </form>
     </div>
@@ -145,6 +145,7 @@
             success : function(response){
                 console.log(response);
                 alert(response[0].TITULO);
+
                 
             }
         })
