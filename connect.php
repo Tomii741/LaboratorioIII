@@ -9,12 +9,12 @@ function conectar($string){
     
     // Create connection
     $conn = mysqli_connect($servername, $username, $password, $dataBase);
-    
     // Check connection
     if (!$conn) {
       die("Connection failed: " . mysqli_connect_error());
     }
-    
+    //seteo de utf8 por el uso de las Ñ
+    $conn->set_charset("utf8");
 
     //envio la query
     // return $conn->query($string);

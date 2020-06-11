@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+
+
+if(!isset($_SESSION['usuario'])){
+    header("location: login.php");
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,14 +20,14 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="index.html">Noticias del Fondo</a>
+            <a class="navbar-brand" href="index.php">Noticias del Fondo</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Inicio
+                        <a class="nav-link" href="index.php">Inicio
                             <span class="sr-only">(current)</span>
                         </a>
                     </li>
@@ -47,11 +56,20 @@
 
 
 <body>
-    <div class="row w-100 m-auto" id="noticias">
-        <!-- Aca se hace el Append de noticias via Ajax -->
-    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <br>
+                <h1><b>Noticias</b></h1>
+            </div>
+            <div class="row w-100 m-auto" id="noticias">
+                <!-- Aca se hace el Append de noticias via Ajax -->
+            </div>    
+        </div>
 
     </div>
+
+    
 
 
 </body>
@@ -84,7 +102,7 @@
                         '<a href="" class="card card-noticia no-link">' +
                         '<label>' + dat[i].CATEGORIA + '</label>' +
                         '<img src="' + dat[i].PATH_IMAGEN_MIN + '" alt="Noticia ' + dat[i].ID + '">' +
-                        '<label>' + dat[i].FECHA + '</label>' +
+                        '<label>' + dat[i].FECHA +" | "+ dat[i].AUTOR + '</label>' +
                         '<p>' + dat[i].TITULO + '</p>' +
                         '</a>' +
                         '</div>');

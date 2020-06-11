@@ -7,6 +7,14 @@ $horaInternet = date("B");
 $direccion = "img/";
 
 
+if(isset($_POST['Autor']) && $_POST['Autor']!=""){
+    $autor = $_POST['Autor'];
+    
+}else{
+    echo "no autor";
+    die;
+}
+
 if(isset($_POST['Categoria']) && $_POST['Categoria']!=""){
     $categoria = $_POST['Categoria'];
     
@@ -53,14 +61,10 @@ if(move_uploaded_file($_FILES['Img']['tmp_name'],$img)){
     if(move_uploaded_file($_FILES['Img_min']['tmp_name'],$img_min)){
         conectar(
         "INSERT INTO tb_noticias (TITULO,CUERPO,PATH_IMAGEN,PATH_IMAGEN_MIN,FECHA,AUTOR,CATEGORIA) 
-        VALUES( '$titulo', '$cuerpo', '$img', '$img_min', '$fecha','sin autor', $categoria)"
+        VALUES( '$titulo', '$cuerpo', '$img', '$img_min', '$fecha','$autor', $categoria)"
         );
-        // FALTA que las noticias lleven anexado el autor que sera quien haya hecho el login
-        echo "<script>alert('Archivo Subido')</script>";
-        //Aqui va a ir una redireccion a carga_noticias.php que sera implementada 
-        // una vez que el sistema de carga este terminado
+
         header('Location: carga_noticias.php');
-        die();
         
     }
     else{
