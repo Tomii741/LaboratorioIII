@@ -6,6 +6,16 @@ session_start();
 if(!isset($_SESSION['usuario'])){
     header("location: login.php");
 }
+
+//Variables de paginacion
+include("connect.php");
+
+                    $cantidadNoticias = conectar("SELECT COUNT(*) as contar FROM tb_noticias");
+                    $cantidadNoticias = mysqli_fetch_array($cantidadNoticias);
+                    $cantidadNoticias["contar"];
+                    $noticiasPorPagina = 3;
+                    $paginas = $cantidadNoticias["contar"] / $noticiasPorPagina;
+                    $paginas = ceil($paginas);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -33,15 +43,15 @@ if(!isset($_SESSION['usuario'])){
                     </li>
 
                     <li class="nav-item active">
-                        <a class="nav-link" href="noticias.php">Noticias</a>
+                        <a class="nav-link" href="noticias.php?categoria='todos'&pagina=1">Noticias</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Nacionales</a>
+                        <a class="nav-link" href="noticias.php?categoria='nacionales'&pagina=1">Nacionales</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Internacionales</a>
+                        <a class="nav-link" href="noticias.php?categoria='internacionales'&pagina=1">Internacionales</a>
                     </li>
 
                     <li class="nav-item">
@@ -69,6 +79,32 @@ if(!isset($_SESSION['usuario'])){
 
     </div>
 
+    <div >
+        <nav aria-label="Page navigation example">
+            <ul class="pagination justify-content-center" id="paginador">
+                <li class="page-item <?php echo $_GET["pagina"]==1 ? "disabled" : "" ?>">
+                                <a class="page-link" href="noticias.php?categoria='todos'pagina=<?php echo$_GET["pagina"]-1 ?>" tabindex="-1">Anterior</a>
+                            </li>
+                <?php for($i=0;$i<$paginas;$i++): ?>
+                    <li class="page-item
+                    <?php echo $_GET["pagina"]==$i+1 ? "active" : "" ?>">
+                        <a class="page-link" href="noticias.php?categoria='todos'&pagina=<?php echo $i+1 ?>">
+                        <?php echo $i+1; ?>
+                        </a>
+                    </li>
+                <?php endfor ?>
+                <li class="page-item <?php echo $_GET["pagina"]==$paginas ? "disabled" : "" ?>">
+                    <a class="page-link" href="noticias.php?categoria='todos'pagina=<?php echo$_GET["pagina"]+1 ?>">Siguiente</a>
+                </li>
+            </ul>
+        </nav>      
+    </div>
+
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            
+        </ul>
+    </nav>
     
 
 
@@ -85,13 +121,15 @@ if(!isset($_SESSION['usuario'])){
 <script src="js/bootstrap.min.js"></script>
 
 <script>
+    var paginaActual = <?php echo $_GET["pagina"]; ?>;
+    var categoria = <?php echo $_GET["categoria"]; ?>;
     $(document).ready(function() {
 
 
         $.ajax({
             type: "post",
             url: "select_noticias.php",
-
+            data: {pagina : paginaActual,category:categoria},
             success: function(result) {
                 // console.log(result);
                 dat = JSON.parse(result); //parseo el JSON recibido

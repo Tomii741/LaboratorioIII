@@ -39,7 +39,7 @@ if(!isset($Email)){
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link" href="noticias.php">Noticias</a>
+                    <a class="nav-link" href="noticias.php?categoria='todos'&pagina=1">Noticias</a>
                   </li>
 
                   <li class="nav-item">

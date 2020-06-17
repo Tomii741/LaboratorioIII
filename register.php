@@ -118,7 +118,6 @@
             
             header("Location: login.php");
 
-            die();
         }else{
 
             echo "ERROR: ";
