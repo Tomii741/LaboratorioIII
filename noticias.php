@@ -10,7 +10,25 @@ if(!isset($_SESSION['usuario'])){
 //Variables de paginacion
 include("connect.php");
 
-                    $cantidadNoticias = conectar("SELECT COUNT(*) as contar FROM tb_noticias");
+                    if(isset($_GET["categoria"]))
+                    {
+                        switch($_GET["categoria"]){   
+                            case "'nacionales'":
+                                $query = "SELECT COUNT(*) as contar FROM tb_noticias WHERE CATEGORIA='1'";  
+                            break;
+                            case "'internacionales'":
+                                $query = "SELECT COUNT(*) as contar FROM tb_noticias WHERE CATEGORIA='2'";  
+                            break;
+                            case "'coronavirus'":
+                                $query = "SELECT COUNT(*) as contar FROM tb_noticias WHERE CATEGORIA='3'";  
+                            break;
+                            default:
+                                $query = "SELECT COUNT(*) as contar FROM tb_noticias";                            
+                            break;
+                        }                        
+                    }
+                   
+                    $cantidadNoticias = conectar($query);
                     $cantidadNoticias = mysqli_fetch_array($cantidadNoticias);
                     $cantidadNoticias["contar"];
                     $noticiasPorPagina = 3;
@@ -83,7 +101,7 @@ include("connect.php");
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center" id="paginador">
                 <li class="page-item <?php echo $_GET["pagina"]==1 ? "disabled" : "" ?>">
-                                <a class="page-link" href="noticias.php?categoria='todos'pagina=<?php echo$_GET["pagina"]-1 ?>" tabindex="-1">Anterior</a>
+                                <a class="page-link" href="noticias.php?categoria='todos'&pagina=<?php echo$_GET["pagina"]-1 ?>" tabindex="-1">Anterior</a>
                             </li>
                 <?php for($i=0;$i<$paginas;$i++): ?>
                     <li class="page-item
@@ -94,7 +112,7 @@ include("connect.php");
                     </li>
                 <?php endfor ?>
                 <li class="page-item <?php echo $_GET["pagina"]==$paginas ? "disabled" : "" ?>">
-                    <a class="page-link" href="noticias.php?categoria='todos'pagina=<?php echo$_GET["pagina"]+1 ?>">Siguiente</a>
+                    <a class="page-link" href="noticias.php?categoria='todos'&pagina=<?php echo$_GET["pagina"]+1 ?>">Siguiente</a>
                 </li>
             </ul>
         </nav>      
