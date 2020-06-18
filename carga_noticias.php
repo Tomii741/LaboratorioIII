@@ -19,18 +19,19 @@ if(!isset($_SESSION['usuario']) || $_SESSION['tipo_usuario']!="Autor"){
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <link rel="stylesheet" href="css/all.min.css">
+    <link rel="icon" href="fondo.ico" type="image/gif" sizes="16x16">
 </head>
 
 <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-              <a class="navbar-brand" href="#">Noticias del Fondo</a>
+              <a class="navbar-brand" href="index.php"><img class="ml-5 logo" src="white_landscape.svg" height="70px"> </a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                  <li class="nav-item ">
+                  <li class="nav-item">
                     <a class="nav-link" href="index.php">Inicio
                       <span class="sr-only">(current)</span>
                     </a>
@@ -67,7 +68,8 @@ if(!isset($_SESSION['usuario']) || $_SESSION['tipo_usuario']!="Autor"){
               </div>
             </div>
           </nav>
-</header>
+    </header>
+
 <body>
     <br>
     <br>

@@ -121,3 +121,17 @@ i{
   color: black;
   
 }
+
+.logo{
+  margin-left: 5em;
+  height: 70px;
+}
+
+/* responsive logo para mobile */
+@media only screen and (max-width: 600px) {
+  .logo {
+    height: 2.5em;
+    margin: 0px;
+  }
+  
+}
