@@ -41,17 +41,19 @@ switch($noticia["CATEGORIA"])
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/fontawesome.min.css">
     <link rel="stylesheet" href="css/all.min.css">
+    <link rel="icon" href="fondo.ico" type="image/gif" sizes="16x16">
 </head>
+
 <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
-              <a class="navbar-brand" href="#">Noticias del Fondo</a>
+              <a class="navbar-brand" href="index.php"><img class="ml-5 logo" src="white_landscape.svg" height="70px"> </a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                  <li class="nav-item ">
+                  <li class="nav-item active">
                     <a class="nav-link" href="index.php">Inicio
                       <span class="sr-only">(current)</span>
                     </a>
@@ -90,16 +92,15 @@ switch($noticia["CATEGORIA"])
           </nav>
     </header>
 
-
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-9 m-auto">
+            <div class="col-9 col-sm-12 m-auto">
                 <br>
                 <h1><b></b></h1>
             </div>
             <div class="row">
-                <div class="col-9 card-noticia m-auto detalles-noticia">
+                <div class="col-9 col-sm-11 card-noticia m-auto detalles-noticia">
                     <h5><b>#<?php echo $noticia["CATEGORIA"] ?></b></h5>
                     <h3><b><?php echo $noticia["TITULO"] ?></b></h3>
                     <img src="<?php echo $noticia["PATH_IMAGEN"] ?>">
@@ -134,3 +135,5 @@ switch($noticia["CATEGORIA"])
     </div>
 </footer>
 
+<script src="js/jquery-3.5.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
