@@ -23,7 +23,7 @@ if(!isset($_SESSION['usuario']) || $_SESSION['tipo_usuario']!="Autor"){
 
 
 <body>
-    <div class="card bg-primary col-lg-9 col-md-11 col-sm-12 m-auto">
+    <div class="card bg-dark col-lg-9 col-md-11 col-sm-12 m-auto">
         <div class="card-header text-white">
             <h1>Noticias</h1>
             <?php echo "<h5>".$_SESSION['usuario']."</h5>" ?>

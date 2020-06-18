@@ -31,7 +31,7 @@ include("connect.php");
                     $cantidadNoticias = conectar($query);
                     $cantidadNoticias = mysqli_fetch_array($cantidadNoticias);
                     $cantidadNoticias["contar"];
-                    $noticiasPorPagina = 3;
+                    $noticiasPorPagina = 6;
                     $paginas = $cantidadNoticias["contar"] / $noticiasPorPagina;
                     $paginas = ceil($paginas);
 ?>
@@ -44,6 +44,8 @@ include("connect.php");
     <title>Noticias del Fondo</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
 </head>
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -131,7 +133,19 @@ include("connect.php");
 
 <footer class="py-5 bg-dark">
     <div class="container">
-        <p class="m-0 text-center text-white">Esto es un footer de Noticias</p>
+        <p class="m-0 text-center text-white">© 1995 - 2020 Todos los derechos reservados. Número de edición: 9024 - Mes: 8 - Año: 24 
+            Propietario: Noticias del Fondo S.A. - CUIT 30-99999477-6 Secretario de Redacción: Elon Musk Propiedad Intelectual: 5316959 
+            San Martín 3000 - Mendoza<br><br>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-instagram-square"></i>
+            <br>
+            <i class="fas fa-share-alt-square"></i>
+            <i class="fas fa-map-marker-alt"></i>
+            <i class="fas fa-envelope"></i>
+
+                    
+        </p>
     </div>
 </footer>
 

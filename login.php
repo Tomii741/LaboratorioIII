@@ -8,7 +8,8 @@
     <title>Login</title>
 </head>
 <body>
-<div class="card bg-primary col-lg-9 col-md-11 col-sm-12 m-auto w-50">
+<div class="container middle">
+    <div class="card bg-dark col-lg-9 col-md-11 col-sm-12 m-auto w-50">
         <div class="card-header text-white">
             <h1>Iniciar Sesion</h1>
         </div>
@@ -25,10 +26,12 @@
                 <input type="password" name="Contraseña" class="form-control" placeholder="Contraseña">
             </div>
 
-            <button class="col-lg-2 col-md-4 col-sm-12 btn btn-success" type="submit" value="login" name="boton">Iniciar Sesion</button>
-            <a class="col-lg-2 col-md-4 col-sm-12 btn btn-secondary" href="register.php">Registrarse</a>
-            
+            <button class="col-lg-3 col-md-4 col-sm-12 btn btn-success mb-1" type="submit" value="login" name="boton">Iniciar Sesion</button>
+            <a class="col-lg-3 col-md-4 col-sm-12 btn btn-secondary mb-1" href="register.php">Registrarse</a>
         </form>
+    </div> 
+
+</div>
 </body>
 
 <script src="js/jquery-3.5.1.min.js"></script>

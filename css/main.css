@@ -89,7 +89,15 @@ body{
   
 }
 
-footer{
-  height: auto;
+
+
+.middle{
+  height: 100vh;
+  display: flex;
+  align-items: center;
 }
 
+i{
+  margin: 0.25em;
+  font-size: 1.5em !important; 
+}
