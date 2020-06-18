@@ -9,7 +9,7 @@
 </head>
 <body>
 <div class="container middle">
-    <div class="card bg-dark col-lg-9 col-md-11 col-sm-12 m-auto w-50">
+    <div class="card bg-dark col-lg-9 col-md-11 col-sm-12 m-auto">
         <div class="card-header text-white">
             <h1>Iniciar Sesion</h1>
         </div>
