@@ -90,7 +90,7 @@ include("connect.php");
 
                 <div class="col-12 mb-5">
                     <div class="card-noticia h-100">
-                        <a class="no-link lineanigga" href="detalle_noticia.php?id='+dat[i].ID+'">
+                        <a class="no-link lineanigga" href="detalle_noticia.php?id=<?php echo $datos[0]['ID']; ?>">
                             <div class="card-body">
                                 <h2 class="no-link"><?php echo $datos[0]['TITULO']; ?></h2>
                                 <img src="<?php echo $datos[0]['PATH_IMAGEN'];?>">
@@ -104,7 +104,7 @@ include("connect.php");
                 </div>
 
                 <?php for($i=1; $i<=4; $i++): ?>
-                <a class=" col-md-6 mb-5 card-noticia no-link lineanigga" href="detalle_noticia.php?id='+dat[i].ID+'">
+                <a class=" col-md-6 mb-5 card-noticia no-link lineanigga" href="detalle_noticia.php?id=<?php echo $datos[$i]['ID']; ?>">
                         <div class=" h-100">
                             <div class="card-body">
                                 <h2 class="card-title"><?php echo $datos[$i]['TITULO']; ?></h2>

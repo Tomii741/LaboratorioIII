@@ -11,7 +11,7 @@
         $query = "SELECT * FROM tb_noticias WHERE ID=" . $_POST['queryID'];       
     }
     if(isset($_POST['pagina'])){
-        $empezando = 3*($_POST["pagina"]-1);
+        $empezando = 6*($_POST["pagina"]-1);
         switch($_POST["category"]){
             case "todos":
                 $query = "SELECT * FROM tb_noticias LIMIT 6 OFFSET $empezando ";  

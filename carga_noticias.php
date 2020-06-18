@@ -21,8 +21,56 @@ if(!isset($_SESSION['usuario']) || $_SESSION['tipo_usuario']!="Autor"){
     <link rel="stylesheet" href="css/all.min.css">
 </head>
 
+<header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+              <a class="navbar-brand" href="#">Noticias del Fondo</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                  <li class="nav-item ">
+                    <a class="nav-link" href="index.php">Inicio
+                      <span class="sr-only">(current)</span>
+                    </a>
+                  </li>
 
+                  <li class="nav-item <?php $_GET["categoria"]=="'todos'" ? "active" : "" ?>">
+                    <a class="nav-link" href="noticias.php?categoria='todos'&pagina=1">Noticias</a>
+                  </li>
+
+                  <li class="nav-item <?php $_GET["categoria"]=="'nacionales'" ? "active" : "" ?>">
+                    <a class="nav-link" href="noticias.php?categoria='nacionales'&pagina=1">Nacionales</a>
+                  </li>
+
+                  <li class="nav-item <?php $_GET["categoria"]=="'internacionales'" ? "active" : "" ?>">
+                    <a class="nav-link" href="noticias.php?categoria='internacionales'&pagina=1">Internacionales</a>
+                  </li>
+
+                  <li class="nav-item <?php $_GET["categoria"]=="'coronavirus'" ? "active" : "" ?>">
+                    <a class="nav-link" href="noticias.php?categoria='coronavirus'&pagina=1">Coronavirus</a>
+                  </li>
+
+                  <?php
+                        if(isset($_SESSION['tipo_usuario'])&&$_SESSION['tipo_usuario']=="Autor"){
+                            echo '<li class="nav-item active">
+                                    <a class="nav-link" href="carga_noticias.php">Cargar Noticia</a>
+                                </li>';
+                        }
+                    ?>
+
+                  <li class="nav-item">
+                    <a class="nav-link btn btn-outline-secondary" href="logout.php">Cerrar Sesion</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+</header>
 <body>
+    <br>
+    <br>
     <div class="card bg-dark col-lg-9 col-md-11 col-sm-12 m-auto">
         <div class="card-header text-white">
             <h1>Noticias</h1>
@@ -49,7 +97,7 @@ if(!isset($_SESSION['usuario']) || $_SESSION['tipo_usuario']!="Autor"){
 
             <div class="form-group">
                 <label>Cuerpo</label>
-                <input type="text" name="Cuerpo" id="cuerpo" class="form-control" placeholder="Cuerpo de la noticia">
+                <textarea name="Cuerpo" id="cuerpo" class="form-control" placeholder="Cuerpo de la noticia"></textarea>
             </div>
 
             <div class="form-group">
@@ -92,6 +140,22 @@ if(!isset($_SESSION['usuario']) || $_SESSION['tipo_usuario']!="Autor"){
         </table>
     </div>
 </body>
+<footer class="py-5 bg-dark">
+    <div class="container">
+        <p class="m-0 text-center text-white">© 1995 - 2020 Todos los derechos reservados. Número de edición: 9024 - Mes: 8 - Año: 24 
+            Propietario: Noticias del Fondo S.A. - CUIT 30-99999477-6 Secretario de Redacción: Elon Musk Propiedad Intelectual: 5316959 
+            San Martín 3000 - Mendoza<br><br>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-instagram-square"></i>
+            <br>
+            <i class="fas fa-share-alt-square"></i>
+            <i class="fas fa-map-marker-alt"></i>
+            <i class="fas fa-envelope"></i>
+          
+        </p>
+    </div>
+</footer>
 <script src="js/jquery-3.5.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script>
