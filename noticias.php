@@ -155,7 +155,7 @@ include("connect.php");
 
                 for (var i = 0; i < dat.length; i++) { //recorro el array de datos y hago un append en de cada card de noticia
                     $("#noticias").append('<div class="col-md-4 ">' +
-                        '<a href="" class="card card-noticia no-link">' +
+                        '<a href="detalle_noticia.php?id='+dat[i].ID+'" class="card card-noticia no-link">' +
                         '<label>' + dat[i].CATEGORIA + '</label>' +
                         '<img src="' + dat[i].PATH_IMAGEN_MIN + '" alt="Noticia ' + dat[i].ID + '">' +
                         '<label>' + dat[i].FECHA +" | "+ dat[i].AUTOR + '</label>' +

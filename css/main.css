@@ -46,6 +46,7 @@ header >h1{
   box-shadow: grey;
   padding: 1rem;
   border-style: solid none none none;
+  background-color: transparent;
 }
 .card-noticia img{
   border-radius: 0.5rem;
@@ -68,4 +69,27 @@ header >h1{
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+.detalles-noticia h5{
+  color: #7aadd3;
+  
+}
+.detalles-noticia h6{
+  color: whitesmoke;
+  float: right;
+}
+.detalles-noticia p{
+  color: #383737;
+  font-weight: 500;
+}
+
+body{
+  background-image: url("../background_3.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+}
+
+footer{
+  height: auto;
+}
 
