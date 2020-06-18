@@ -5,10 +5,20 @@ $Email = $_SESSION['email'];
 
 if(!isset($Email)){
     header("location: login.php");
-}else{
-    echo "<script>alert('Bienvenido ".$_SESSION['usuario']."');</script>";
-
 }
+
+include("connect.php");
+
+    $query = "SELECT * FROM tb_noticias ORDER BY ID DESC LIMIT 5 ";
+
+    $noticias = conectar($query);
+    $datos = array();
+    while($row = mysqli_fetch_assoc($noticias))
+        {
+            $datos[]=$row;
+        }
+    //var_dump($datos);
+    //$noticias->fetch_array();
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +43,7 @@ if(!isset($Email)){
               <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                   <li class="nav-item active">
-                    <a class="nav-link" href="#">Inicio
+                    <a class="nav-link" href="index.php">Inicio
                       <span class="sr-only">(current)</span>
                     </a>
                   </li>
@@ -43,21 +53,21 @@ if(!isset($Email)){
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Nacionales</a>
+                    <a class="nav-link" href="noticias.php?categoria='nacionales'&pagina=1">Nacionales</a>
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Internacionales</a>
+                    <a class="nav-link" href="noticias.php?categoria='internacionales'&pagina=1">Internacionales</a>
                   </li>
 
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Contacto</a>
+                    <a class="nav-link" href="noticias.php?categoria='coronavirus'&pagina=1">Coronavirus</a>
                   </li>
 
                   <?php
                         if(isset($_SESSION['tipo_usuario'])&&$_SESSION['tipo_usuario']=="Autor"){
                             echo '<li class="nav-item">
-                                    <a class="nav-link" href="carga_noticias.php" target="_blank">Cargar Noticia</a>
+                                    <a class="nav-link" href="carga_noticias.php">Cargar Noticia</a>
                                 </li>';
                         }
                     ?>
@@ -77,63 +87,33 @@ if(!isset($Email)){
 
                 <div class="col-12 mb-5">
                     <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">Noticia Principal</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-                            <div class="blockquote">
-                                <div class="blockquote-footer">Autor: <cite title="Source Title">(nombre del autor)</cite></div>
+                        <a class=" card-noticia no-link lineanigga" href="detalle_noticia.php?id='+dat[i].ID+'">
+                            <div class="card-body">
+                                <h2 class="no-link"><?php echo $datos[0]['TITULO']; ?></h2>
+                                <img src="<?php echo $datos[0]['PATH_IMAGEN'];?>">
+                                <p class="card-text"><?php echo $datos[0]['CUERPO']; ?></p>
+                                <div class="blockquote">
+                                    <div class="blockquote-footer">Autor: <cite title="Source Title"><?php echo $datos[0]['AUTOR'] ?></cite></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#" class="btn btn-primary btn-sm">More Info</a>
-                        </div>
+                        </a>
                     </div>
                 </div>
 
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">Noticia uno</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-                            <div class="blockquote">
-                                <div class="blockquote-footer">Autor: <cite title="Source Title">(nombre del autor)</cite></div>
+                <?php for($i=1; $i<=4; $i++): ?>
+                <a class=" col-md-6 mb-5 card-noticia no-link lineanigga" href="detalle_noticia.php?id='+dat[i].ID+'">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h2 class="card-title"><?php echo $datos[$i]['TITULO']; ?></h2>
+                                <img src="<?php echo $datos[$i]['PATH_IMAGEN'];?>">
+                                <p class="card-text limite"><?php echo $datos[$i]['CUERPO']; ?></p>
+                                <div class="blockquote">
+                                    <div class="blockquote-footer">Autor: <cite title="Source Title"><?php echo $datos[$i]['AUTOR'] ?></cite></div>
+                                </div>
                             </div>
                         </div>
-                        <div class="card-footer">
-                            <a href="#" class="btn btn-primary btn-sm">More Info</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">Noticia dos</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod tenetur ex natus at dolorem enim! Nesciunt pariatur voluptatem sunt quam eaque, vel, non in id dolore voluptates quos eligendi labore.</p>
-                            <div class="blockquote">
-                                <div class="blockquote-footer">Autor: <cite title="Source Title">(nombre del autor)</cite></div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#" class="btn btn-primary btn-sm">More Info</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-4 mb-5">
-                    <div class="card h-100">
-                        <div class="card-body">
-                            <h2 class="card-title">Noticia tres</h2>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem magni quas ex numquam, maxime minus quam molestias corporis quod, ea minima accusamus.</p>
-                            <div class="blockquote">
-                                <div class="blockquote-footer">Autor: <cite title="Source Title">(nombre del autor)</cite></div>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <a href="#" class="btn btn-primary btn-sm">More Info</a>
-                        </div>
-                    </div>
-                </div>
+                </a>
+                <?php endfor ?>
             </div>
         </div>
     </section>

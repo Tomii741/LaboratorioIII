@@ -19,11 +19,16 @@ header >h1{
 }
 
 .no-link:a {
-  color: inherit;
+  color: black !important;
   text-decoration: none ;
 }
 .no-link:hover {
-  color: inherit;
+  color: black;
+  text-decoration: none ;
+}
+
+.no-link:visited {
+  color: black !important;
   text-decoration: none ;
 }
 
@@ -67,5 +72,12 @@ header >h1{
   font-size: smaller;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
-
-
+.lineanigga{
+  color: black;
+  text-decoration-color: black !important;
+}
+.limite{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
