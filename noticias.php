@@ -48,41 +48,52 @@ include("connect.php");
     <link rel="stylesheet" href="css/all.min.css">
 </head>
 <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="index.php">Noticias del Fondo</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+              <a class="navbar-brand" href="#">Noticias del Fondo</a>
+              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
+              </button>
+              <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php">Inicio
-                            <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
+                  <li class="nav-item ">
+                    <a class="nav-link" href="index.php">Inicio
+                      <span class="sr-only">(current)</span>
+                    </a>
+                  </li>
 
-                    <li class="nav-item active">
-                        <a class="nav-link" href="noticias.php?categoria='todos'&pagina=1">Noticias</a>
-                    </li>
+                  <li class="nav-item <?php echo $_GET["categoria"]=="'todos'" ? "active" : "" ?>">
+                    <a class="nav-link" href="noticias.php?categoria='todos'&pagina=1">Noticias</a>
+                  </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="noticias.php?categoria='nacionales'&pagina=1">Nacionales</a>
-                    </li>
+                  <li class="nav-item <?php echo $_GET["categoria"]=="'nacionales'" ? "active" : "" ?>">
+                    <a class="nav-link" href="noticias.php?categoria='nacionales'&pagina=1">Nacionales</a>
+                  </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="noticias.php?categoria='internacionales'&pagina=1">Internacionales</a>
-                    </li>
+                  <li class="nav-item <?php echo $_GET["categoria"]=="'internacionales'" ? "active" : "" ?>">
+                    <a class="nav-link" href="noticias.php?categoria='internacionales'&pagina=1">Internacionales</a>
+                  </li>
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Contacto</a>
-                    </li>
+                  <li class="nav-item <?php echo $_GET["categoria"]=="'coronavirus'" ? "active" : "" ?>">
+                    <a class="nav-link" href="noticias.php?categoria='coronavirus'&pagina=1">Coronavirus</a>
+                  </li>
 
+                  <?php
+                        if(isset($_SESSION['tipo_usuario'])&&$_SESSION['tipo_usuario']=="Autor"){
+                            echo '<li class="nav-item">
+                                    <a class="nav-link" href="carga_noticias.php">Cargar Noticia</a>
+                                </li>';
+                        }
+                    ?>
+
+                  <li class="nav-item">
+                    <a class="nav-link btn btn-outline-secondary" href="logout.php">Cerrar Sesion</a>
+                  </li>
                 </ul>
+              </div>
             </div>
-        </div>
-    </nav>
-</header>
+          </nav>
+    </header>
 
 
 <body>
@@ -143,8 +154,7 @@ include("connect.php");
             <i class="fas fa-share-alt-square"></i>
             <i class="fas fa-map-marker-alt"></i>
             <i class="fas fa-envelope"></i>
-
-                    
+          
         </p>
     </div>
 </footer>
@@ -168,7 +178,7 @@ include("connect.php");
 
 
                 for (var i = 0; i < dat.length; i++) { //recorro el array de datos y hago un append en de cada card de noticia
-                    $("#noticias").append('<div class="col-md-4 ">' +
+                    $("#noticias").append('<div class="col-lg-4 col-md-6 col-sm-12 ">' +
                         '<a href="detalle_noticia.php?id='+dat[i].ID+'" class="card card-noticia no-link">' +
                         '<label>' + dat[i].CATEGORIA + '</label>' +
                         '<img src="' + dat[i].PATH_IMAGEN_MIN + '" alt="Noticia ' + dat[i].ID + '">' +

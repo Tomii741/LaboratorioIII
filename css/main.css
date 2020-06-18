@@ -51,7 +51,8 @@ header >h1{
   box-shadow: grey;
   padding: 1rem;
   border-style: solid none none none;
-  background-color: transparent;
+  background-color: #383737; 
+  background-color: transparent !important;
 }
 .card-noticia img{
   border-radius: 0.5rem;
@@ -114,4 +115,9 @@ i{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.blockquote-footer{
+  color: black;
+  
 }

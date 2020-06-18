@@ -29,11 +29,12 @@ include("connect.php");
     <title>Noticias del Fondo</title>
     <link rel="stylesheet" href="css/bootstrap.css" >
     <link rel="stylesheet" href="css/main.css" >
-
+    <link rel="stylesheet" href="css/fontawesome.min.css">
+    <link rel="stylesheet" href="css/all.min.css">
 </head>
 
 <body>
-    <header>
+<header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
               <a class="navbar-brand" href="#">Noticias del Fondo</a>
@@ -48,19 +49,19 @@ include("connect.php");
                     </a>
                   </li>
 
-                  <li class="nav-item">
+                  <li class="nav-item <?php $_GET["categoria"]=="'todos'" ? "active" : "" ?>">
                     <a class="nav-link" href="noticias.php?categoria='todos'&pagina=1">Noticias</a>
                   </li>
 
-                  <li class="nav-item">
+                  <li class="nav-item <?php $_GET["categoria"]=="'nacionales'" ? "active" : "" ?>">
                     <a class="nav-link" href="noticias.php?categoria='nacionales'&pagina=1">Nacionales</a>
                   </li>
 
-                  <li class="nav-item">
+                  <li class="nav-item <?php $_GET["categoria"]=="'internacionales'" ? "active" : "" ?>">
                     <a class="nav-link" href="noticias.php?categoria='internacionales'&pagina=1">Internacionales</a>
                   </li>
 
-                  <li class="nav-item">
+                  <li class="nav-item <?php $_GET["categoria"]=="'coronavirus'" ? "active" : "" ?>">
                     <a class="nav-link" href="noticias.php?categoria='coronavirus'&pagina=1">Coronavirus</a>
                   </li>
 
@@ -82,12 +83,14 @@ include("connect.php");
     </header>
 
     <section>
+        <br>
+        <br>
         <div class="container">
             <div class="row">
 
                 <div class="col-12 mb-5">
-                    <div class="card h-100">
-                        <a class=" card-noticia no-link lineanigga" href="detalle_noticia.php?id='+dat[i].ID+'">
+                    <div class="card-noticia h-100">
+                        <a class="no-link lineanigga" href="detalle_noticia.php?id='+dat[i].ID+'">
                             <div class="card-body">
                                 <h2 class="no-link"><?php echo $datos[0]['TITULO']; ?></h2>
                                 <img src="<?php echo $datos[0]['PATH_IMAGEN'];?>">
@@ -102,7 +105,7 @@ include("connect.php");
 
                 <?php for($i=1; $i<=4; $i++): ?>
                 <a class=" col-md-6 mb-5 card-noticia no-link lineanigga" href="detalle_noticia.php?id='+dat[i].ID+'">
-                        <div class="card h-100">
+                        <div class=" h-100">
                             <div class="card-body">
                                 <h2 class="card-title"><?php echo $datos[$i]['TITULO']; ?></h2>
                                 <img src="<?php echo $datos[$i]['PATH_IMAGEN'];?>">
@@ -119,10 +122,21 @@ include("connect.php");
     </section>
 
     <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">Esto es un footer de Noticias</p>
-          </div>
-    </footer>
+    <div class="container">
+        <p class="m-0 text-center text-white">© 1995 - 2020 Todos los derechos reservados. Número de edición: 9024 - Mes: 8 - Año: 24 
+            Propietario: Noticias del Fondo S.A. - CUIT 30-99999477-6 Secretario de Redacción: Elon Musk Propiedad Intelectual: 5316959 
+            San Martín 3000 - Mendoza<br><br>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-facebook-square"></i>
+            <i class="fab fa-instagram-square"></i>
+            <br>
+            <i class="fas fa-share-alt-square"></i>
+            <i class="fas fa-map-marker-alt"></i>
+            <i class="fas fa-envelope"></i>
+          
+        </p>
+    </div>
+</footer>
 </body>
 
 <script src="js/jquery-3.5.1.min.js"></script>
